@@ -1,0 +1,204 @@
+{
+	"info": {
+		"_postman_id": "b6b68003-8f38-4b1f-bdb0-54aa7b2aae93",
+		"name": "My First APi Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GetUsers",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6a75b430-e780-4f96-ade7-682980cb875c",
+						"exec": [
+							"console.log(\"id\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "d324bbcb-01ce-4948-b7a6-9bf039bae02c",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://reqres.in/api/users?page=2",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create USER",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "4436832d-8567-48f1-999e-2c32bcba99b2",
+						"exec": [
+							"pm.environment.set(\"Fullname\", pm.variables.replaceIn('{{$randomFullName}}')); ",
+							"pm.environment.set(\"Job Title\", pm.variables.replaceIn('{{$randomJobTitle}}'));"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "9613329b-cb1f-4d5e-ad7d-008d463cbba3",
+						"exec": [
+							"var resp = pm.response.json();",
+							"",
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);",
+							"});",
+							"",
+							"pm.environment.set(\"ID\",resp.id)",
+							"",
+							"postman.setNextRequest(\"UPDATE User\")",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "0a0af6aa-a0b8-4ad5-9828-b5b628851f21",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"name\",\n    \"job\" : \"job\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://reqres.in/api/users"
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "df1c9a53-bccc-4484-b86c-ad320004d216",
+						"exec": [
+							"postman.setNextRequest(\"DELETE USER\");",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "a1b52b0f-70d1-45d2-a910-10e516b47f5b",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Vivek up\",\n    \"job\" : \"Sr Tester\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://reqres.in/api/users/{{ID}}"
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE USER",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "90958c23-762f-4bd8-8237-288bab3e0bb5",
+						"exec": [
+							"postman.setNextRequest(null);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "77a556b1-0cfc-4767-acd5-927ecd9702ea",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Vivek\",\n    \"job\" : \"Sr Tester\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://reqres.in/api/users/568"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "89ebad49-755f-4035-98c6-c63b29c16036",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "d2fcbaf6-8194-44ed-83bb-4445811c0725",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
