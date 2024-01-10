@@ -97,7 +97,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"name\": \"name\",\n    \"job\" : \"job\"\n}",
+					"raw": "{\n    \"name\": \"nme\",\n    \"job\" : \"job\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
