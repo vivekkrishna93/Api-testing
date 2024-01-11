@@ -2,6 +2,7 @@
 	"info": {
 		"_postman_id": "b6b68003-8f38-4b1f-bdb0-54aa7b2aae93",
 		"name": "My First APi Collection",
+		"description": "Dummy test",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
@@ -47,7 +48,8 @@
 							"value": "2"
 						}
 					]
-				}
+				},
+				"description": "its get method"
 			},
 			"response": []
 		},
@@ -104,7 +106,8 @@
 						}
 					}
 				},
-				"url": "https://reqres.in/api/users"
+				"url": "https://reqres.in/api/users",
+				"description": "its post method"
 			},
 			"response": []
 		},
@@ -139,7 +142,8 @@
 						}
 					}
 				},
-				"url": "https://reqres.in/api/users/{{ID}}"
+				"url": "https://reqres.in/api/users/{{ID}}",
+				"description": "its update method."
 			},
 			"response": []
 		},
@@ -174,7 +178,8 @@
 						}
 					}
 				},
-				"url": "https://reqres.in/api/users/568"
+				"url": "https://reqres.in/api/users/568",
+				"description": "its delete method"
 			},
 			"response": []
 		}
